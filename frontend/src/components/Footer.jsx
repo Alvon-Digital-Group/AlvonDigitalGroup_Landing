@@ -24,18 +24,24 @@ function Footer() {
           <h3>Contact</h3>
 
           <p>
-            <MapPin size={18}/>
-            165 Rue Becquerel<br />
-            59500 Douai, France
+            <MapPin size={18} />
+            <a
+              href="https://www.google.com/maps/search/165+Rue+Becquerel,+59500+Douai"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              165 Rue Becquerel<br />
+              59500 Douai, France
+            </a>
           </p>
 
           <p>
-            <Phone size={18}/>
+            <Phone size={18} />
             <a href="tel:+33320000000">03 20 00 00 00</a>
           </p>
 
           <p>
-            <Mail size={18}/>
+            <Mail size={18} />
             <a href="mailto:serviceclient@alvondigitalgroup.com">serviceclient@alvondigitalgroup.com</a>
           </p>
 

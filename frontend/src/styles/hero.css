@@ -66,9 +66,6 @@
 
 .btn-primary:hover {
     transform:translateY(-3px);
-    background: white;
-    color:var(--primary);
-    border:2px solid var(--primary);
 }
 
 .btn-secondary{
@@ -82,8 +79,6 @@
 
 .btn-secondary:hover{
     transform:translateY(-3px);
-    background:fixed linear-gradient(90deg,#38BDF8,#A855F7);
-    color:white;
 }
 
 .hero-right img{
