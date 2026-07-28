@@ -1,0 +1,18 @@
+.contact-intro{
+    padding:50px 0 40px;
+    text-align:center;
+    background: #f8fafc;
+}
+
+.contact-intro .container{
+    max-width:800px;
+}
+
+.contact-intro h2{
+    font-size:1.5rem;
+    margin:20px 0;
+}
+
+.contact-intro p{
+    line-height:1.8;
+}

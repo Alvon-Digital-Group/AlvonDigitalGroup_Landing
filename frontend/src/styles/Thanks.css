@@ -1,0 +1,119 @@
+.thank-you {
+    min-height: calc(100vh - 180px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 20px;
+    background: var(--bg-light);
+}
+
+.thank-you-card {
+    max-width: 700px;
+    width: 100%;
+    background: white;
+    padding: 60px 50px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, .08);
+    position: relative;
+    transition: .3s;
+}
+
+.thank-you-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+    padding: 3px;
+    background: linear-gradient(135deg, #38BDF8, #A855F7);
+
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+
+    opacity: 0;
+    transition: .3s;
+    pointer-events: none;
+}
+
+.thank-you-card:hover {
+    transform: translateY(-8px);
+}
+
+.thank-you-card:hover::before {
+    opacity: 1;
+}
+
+.success-icon {
+    width: 90px;
+    height: 90px;
+    margin: 0 auto 30px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #38BDF8, #A855F7);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.8rem;
+    font-weight: bold;
+}
+
+.thank-you-card h1 {
+    font-size: 2.5rem;
+    color: var(--dark);
+    margin-bottom: 20px;
+}
+
+.thank-you-card p {
+    color: var(--text);
+    line-height: 1.8;
+    margin-bottom: 40px;
+    font-size: 1.05rem;
+}
+
+.btn-home {
+    display: inline-block;
+    padding: 15px 35px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #38BDF8, #A855F7);
+    color: white;
+    font-weight: 600;
+    transition: .3s;
+}
+
+.btn-home:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, .15);
+}
+
+@media (max-width: 768px) {
+
+    .thank-you {
+        padding: 80px 20px;
+    }
+
+    .thank-you-card {
+        padding: 40px 30px;
+    }
+
+    .thank-you-card h1 {
+        font-size: 2rem;
+    }
+
+    .thank-you-card p {
+        font-size: 1rem;
+    }
+
+    .success-icon {
+        width: 75px;
+        height: 75px;
+        font-size: 2.3rem;
+    }
+
+    .btn-home {
+        width: 100%;
+    }
+
+}

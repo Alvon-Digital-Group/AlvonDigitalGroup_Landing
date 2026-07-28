@@ -9,10 +9,12 @@ import Thanks from "./pages/Thanks";
 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import ScrollToTop from "./components/ScrollTop";
 
 function App() {
   return (
     <>
+      <ScrollToTop />
       <Navbar />
 
       <Routes>

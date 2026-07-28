@@ -1,5 +1,7 @@
 import PageHero from "../components/PageHero";
 import contactHero from "../assets/contact-hero.jpg";
+import ContactIntro from "../components/ContactIntro";
+import ContactSection from "../components/ContactSection";
 
 function Contact() {
   return (
@@ -9,6 +11,9 @@ function Contact() {
         subtitle="Nous sommes là pour répondre à vos questions et vous accompagner dans la réalisation de vos idées."
         image={contactHero}
       />
+
+      <ContactIntro />  
+      <ContactSection />  
     </>
   );
 }
