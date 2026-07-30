@@ -1,4 +1,6 @@
 import nodemailer from "nodemailer";
+import path from "path";
+import { fileURLToPath } from "url";
 
 const transporter = nodemailer.createTransport({
     service: "gmail",
@@ -8,10 +10,21 @@ const transporter = nodemailer.createTransport({
     },
 });
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 
 export const sendContactEmail = async (contact) => {
 
     const mailOptions = {
+
+        attachments: [
+            {
+                filename: "logo.png",
+                path: path.join(__dirname, "../../assets/logo.png"),
+                cid: "logoAlvon"
+            }
+        ],
         from: `"Site Alvon Digital Group" <${process.env.EMAIL_USER}>`,
         to: process.env.EMAIL_USER,
         subject: "Nouvelle demande de contact",
@@ -29,7 +42,13 @@ export const sendContactEmail = async (contact) => {
 <td align="center">
 
 <table width="650" cellpadding="0" cellspacing="0" style="background:white;border-radius:15px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.08);">
-
+<div style="text-align:center;margin-bottom:20px;">
+    <img
+        src="cid:logoAlvon"
+        alt="Alvon Digital Group"
+        style="width:140px;"
+    />
+</div>
 <tr>
 <td style="background:linear-gradient(135deg,#38BDF8,#A855F7);padding:30px;text-align:center;">
 
@@ -123,6 +142,14 @@ Alvon Digital Group • Développement Web • Mobile • SEO
 export const sendConfirmationEmail = async (contact) => {
 
     const mailOptions = {
+
+        attachments: [
+    {
+        filename: "logo.png",
+        path: path.join(__dirname, "../../assets/logo.png"),
+        cid: "logoAlvon"
+    }
+],
         from: `"Alvon Digital Group" <${process.env.EMAIL_USER}>`,
         to: contact.email,
         subject: "Nous avons bien reçu votre demande",
@@ -138,6 +165,14 @@ export const sendConfirmationEmail = async (contact) => {
 <table width="100%" cellpadding="0" cellspacing="0">
 <tr>
 <td align="center">
+
+<div style="text-align:center;margin-bottom:20px;">
+    <img
+        src="cid:logoAlvon"
+        alt="Alvon Digital Group"
+        style="width:140px;"
+    />
+</div>
 
 <table width="650" cellpadding="0" cellspacing="0" style="
 background:white;

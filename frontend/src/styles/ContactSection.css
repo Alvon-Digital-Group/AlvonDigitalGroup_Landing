@@ -83,6 +83,18 @@ textarea{
     box-shadow:0 10px 25px rgba(0,0,0,.15);
 }
 
+.submit-btn:disabled {
+    opacity: .7;
+    cursor: not-allowed;
+}
+
+.error-message {
+    margin-top: 20px;
+    color: #dc2626;
+    font-weight: 600;
+    text-align: center;
+}
+
 @media(max-width:768px){
 
     .contact-form{
