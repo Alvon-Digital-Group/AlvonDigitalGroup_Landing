@@ -1,5 +1,5 @@
 import "../styles/PageHero.css";
-import logo from "../assets/logo.png";
+import logo from "../assets/logo2.png";
 
 function PageHero({ title, subtitle, image }) {
     return (

@@ -42,15 +42,15 @@ function MentionsLegales() {
                 </p>
 
                 <p>
-                    Hébergeur :
+                    Hébergeur : AMEN
                 </p>
 
                 <p>
-                    Adresse :
+                    Adresse : 200 rue de la Croix Nivert, 75015 Paris, France
                 </p>
 
                 <p>
-                    Site web :
+                    Site web : Amen.fr
                 </p>
             </LegalSection>
 

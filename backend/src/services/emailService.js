@@ -21,7 +21,7 @@ export const sendContactEmail = async (contact) => {
         attachments: [
             {
                 filename: "logo.png",
-                path: path.join(__dirname, "../../assets/logo.png"),
+                path: path.join(__dirname, "../../assets/logo2.png"),
                 cid: "logoAlvon"
             }
         ],
@@ -146,7 +146,7 @@ export const sendConfirmationEmail = async (contact) => {
         attachments: [
     {
         filename: "logo.png",
-        path: path.join(__dirname, "../../assets/logo.png"),
+        path: path.join(__dirname, "../../assets/logo2.png"),
         cid: "logoAlvon"
     }
 ],

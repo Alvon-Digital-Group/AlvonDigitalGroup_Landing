@@ -37,7 +37,7 @@ function Footer() {
 
           <p>
             <Phone size={18} />
-            <a href="tel:+33320000000">03 20 00 00 00</a>
+            <a href="tel:+33679647609">06 79 64 76 09</a>
           </p>
 
           <p>

@@ -1,6 +1,6 @@
 import "../styles/hero.css";
-import heroImage from "../assets/hero.jpg";
-import logo from "../assets/logo.png";
+import heroImage from "../assets/hero3.png";
+import logo from "../assets/logo2.png";
 import { Link } from "react-router-dom";
 
 function Hero() {

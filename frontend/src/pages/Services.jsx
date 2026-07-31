@@ -1,5 +1,5 @@
 import PageHero from "../components/PageHero.jsx";
-import servicesHero from "../assets/services-hero.jpg";
+import servicesHero from "../assets/services-hero2.jpg";
 import CTA from "../components/CTA.jsx";
 import ServiceSection from "../components/ServiceSection.jsx";
 import ServicesIntro from "../components/ServicesIntro.jsx";

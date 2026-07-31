@@ -1,5 +1,5 @@
 import PageHero from "../components/PageHero.jsx";
-import agencyHero from "../assets/agency-hero.jpg";
+import agencyHero from "../assets/agency-hero2.jpg";
 import CTA from "../components/CTA.jsx";
 import AboutAgency from "../components/AboutAgency.jsx";
 import Vision from "../components/Vision.jsx";
