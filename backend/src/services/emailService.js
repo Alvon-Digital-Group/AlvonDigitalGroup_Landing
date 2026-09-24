@@ -2,33 +2,43 @@ import nodemailer from "nodemailer";
 import path from "path";
 import { fileURLToPath } from "url";
 
-const transporter = nodemailer.createTransport({
+const createTransporter = () => {
+  const emailUser = process.env.EMAIL_USER;
+  const emailPass = process.env.EMAIL_PASS;
+
+  if (!emailUser || !emailPass) {
+    throw new Error(
+      "EMAIL_USER and EMAIL_PASS are missing. Generate a Gmail app password and set them in the .env file.",
+    );
+  }
+
+  return nodemailer.createTransport({
     service: "gmail",
     auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
+      user: emailUser,
+      pass: emailPass,
     },
-});
+  });
+};
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-
 export const sendContactEmail = async (contact) => {
+  const transporter = createTransporter();
 
-    const mailOptions = {
-
-        attachments: [
-            {
-                filename: "logo.png",
-                path: path.join(__dirname, "../../assets/logo2.png"),
-                cid: "logoAlvon"
-            }
-        ],
-        from: `"Site Alvon Digital Group" <${process.env.EMAIL_USER}>`,
-        to: process.env.EMAIL_USER,
-        subject: "Nouvelle demande de contact",
-        html: `
+  const mailOptions = {
+    attachments: [
+      {
+        filename: "logo.png",
+        path: path.join(__dirname, "../../assets/logo2.png"),
+        cid: "logoAlvon",
+      },
+    ],
+    from: `"Site Alvon Digital Group" <${process.env.EMAIL_USER}>`,
+    to: process.env.EMAIL_USER,
+    subject: "Nouvelle demande de contact",
+    html: `
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -133,27 +143,26 @@ Alvon Digital Group • Développement Web • Mobile • SEO
 </body>
 </html>
 `,
-    };
+  };
 
-    await transporter.sendMail(mailOptions);
+  await transporter.sendMail(mailOptions);
 };
 
-
 export const sendConfirmationEmail = async (contact) => {
+  const transporter = createTransporter();
 
-    const mailOptions = {
-
-        attachments: [
-    {
+  const mailOptions = {
+    attachments: [
+      {
         filename: "logo.png",
         path: path.join(__dirname, "../../assets/logo2.png"),
-        cid: "logoAlvon"
-    }
-],
-        from: `"Alvon Digital Group" <${process.env.EMAIL_USER}>`,
-        to: contact.email,
-        subject: "Nous avons bien reçu votre demande",
-        html: `
+        cid: "logoAlvon",
+      },
+    ],
+    from: `"Alvon Digital Group" <${process.env.EMAIL_USER}>`,
+    to: contact.email,
+    subject: "Nous avons bien reçu votre demande",
+    html: `
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -278,7 +287,7 @@ color:#777;
 </body>
 </html>
 `,
-    };
+  };
 
-    await transporter.sendMail(mailOptions);
+  await transporter.sendMail(mailOptions);
 };
