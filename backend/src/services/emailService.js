@@ -24,6 +24,31 @@ const createTransporter = () => {
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+export const sendContactEmails = (contact, dependencies = {}) => {
+  const contactEmailSender = dependencies.contactEmailSender ?? sendContactEmail;
+  const confirmationSender = dependencies.confirmationSender ?? sendConfirmationEmail;
+
+  if (typeof contactEmailSender !== "function" || typeof confirmationSender !== "function") {
+    return false;
+  }
+
+  void Promise.allSettled([
+    contactEmailSender(contact),
+    confirmationSender(contact),
+  ]).then((results) => {
+    results.forEach((result, index) => {
+      if (result.status === "rejected") {
+        console.error(
+          `Email send failed (${index === 0 ? "contact" : "confirmation"}):`,
+          result.reason,
+        );
+      }
+    });
+  });
+
+  return true;
+};
+
 export const sendContactEmail = async (contact) => {
   const transporter = createTransporter();
 
