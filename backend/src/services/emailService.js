@@ -2,9 +2,14 @@ import nodemailer from "nodemailer";
 import path from "path";
 import { fileURLToPath } from "url";
 
+const normalizeEmailCredential = (value) =>
+  String(value ?? "")
+    .trim()
+    .replace(/\s+/g, "");
+
 const createTransporter = () => {
-  const emailUser = process.env.EMAIL_USER;
-  const emailPass = process.env.EMAIL_PASS;
+  const emailUser = normalizeEmailCredential(process.env.EMAIL_USER);
+  const emailPass = normalizeEmailCredential(process.env.EMAIL_PASS);
 
   if (!emailUser || !emailPass) {
     throw new Error(
@@ -23,6 +28,24 @@ const createTransporter = () => {
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+export const sendContactEmails = (contact) => {
+  void Promise.allSettled([
+    sendContactEmail(contact),
+    sendConfirmationEmail(contact),
+  ]).then((results) => {
+    results.forEach((result, index) => {
+      if (result.status === "rejected") {
+        console.error(
+          `Email send failed (${index === 0 ? "contact" : "confirmation"}):`,
+          result.reason,
+        );
+      }
+    });
+  });
+
+  return true;
+};
 
 export const sendContactEmail = async (contact) => {
   const transporter = createTransporter();

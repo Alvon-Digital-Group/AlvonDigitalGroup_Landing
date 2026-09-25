@@ -1,7 +1,4 @@
-import {
-  sendContactEmail,
-  sendConfirmationEmail,
-} from "../services/emailService.js";
+import { sendContactEmails } from "../services/emailService.js";
 
 export const createContact = async (req, res) => {
   try {
@@ -16,13 +13,12 @@ export const createContact = async (req, res) => {
       message,
     };
 
-    await sendContactEmail(contact);
-    await sendConfirmationEmail(contact);
+    sendContactEmails(contact);
 
     return res.status(201).json({
       success: true,
       message:
-        "Votre demande a bien été enregistrée. Un email de confirmation vous a été envoyé.",
+        "Votre demande a bien été enregistrée. Nous la traitons et vous répondrons rapidement.",
       data: contact,
     });
   } catch (error) {
